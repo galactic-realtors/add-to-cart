@@ -1,7 +1,6 @@
 const assert = require('assert');
 const expect = require('chai').expect;
-const should = require('chai').should();
-const {getAllProducts} = require('../database/index');
+const { getAllProducts } = require('../database/index');
 
 (function() {
   'use strict';
