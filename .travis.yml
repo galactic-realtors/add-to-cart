@@ -11,6 +11,6 @@ node_js:
 install:
   - npm install
 before_script:
-  - npm start
+  - nohup node ./server/index.js &
 scripts:
   - npm test
