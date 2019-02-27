@@ -8,21 +8,21 @@ const cartSchema = new Schema ({
     product_name: String,
     price: String
   }, {
-     versionKey: false 
+    versionKey: false 
 })
 
 const Cart = mongoose.model('Cart', cartSchema);
 
 const getAllProducts = (id, callback) => {
-  console.log('where is this going?????')
-  Cart.findOne({'id': id})
-    .then((data) => {
-      console.log(data, 'grabbing all data from get all products')
-      callback(null, data)
-    })
-    .catch(err => {
-      callback(err, null);
-    })
+  if (!isNaN(id)) {
+    Cart.findOne({'id': id})
+      .then((data) => {
+        callback(null, data)
+      })
+      .catch((err) => {
+        callback(err, null);
+      });
+  } else { callback( Error('ID supplied was not a number')) }
 }
 
 module.exports = { getAllProducts, Cart };

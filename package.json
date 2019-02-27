@@ -1,20 +1,22 @@
 {
-  "name": "",
+  "name": "planetzon-cart",
   "version": "",
-  "description": "FEC project",
-  "author": "Hannah Kang",
+  "description": "SDC Project",
+  "author": "James Boyet",
   "license": "",
   "main": "index.js",
   "scripts": {
     "seed": "node ./database/seed.js",
     "build": "webpack -d --watch",
-    "start": "nodemon ./server/index.js"
-
+    "start": "nodemon ./server/index.js",
+    "test": "mocha --recursive test"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
     "express": "^4.16.4",
+    "mocha": "^6.0.2",
     "mongodb": "^3.1.13",
     "mongodb-schema": "^8.2.3",
     "mongoose": "^5.4.10",
