@@ -8,7 +8,7 @@ const cartSchema = new Schema ({
     product_name: String,
     price: String
   }, {
-     versionKey: false 
+    versionKey: false 
 })
 
 const Cart = mongoose.model('Cart', cartSchema);
@@ -21,6 +21,7 @@ const getAllProducts = (id, callback) => {
       callback(null, data)
     })
     .catch(err => {
+      console.log('errrr', err)
       callback(err, null);
     })
 }
