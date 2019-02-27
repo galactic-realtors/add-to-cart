@@ -4,26 +4,27 @@ const axios = require('axios');
 
 const server = 'http://localhost:3000';
 
-describe('server communication', (done) => {
-  it('should return a 200 on successful message', function(){
-		axios.get(`${server}/`)
+describe('server communication', () => {
+  it('should return a 200 on successful message', function(done){
+		axios.get(`${server}/api/getAll/69`)
 			.then((data) => {
-				console.log('this is datafdsgjhkhnlaopqwfjinib ifjhnvwinrwirwnirnrweirnwigvnwre,', data);
+				expect(data.status).to.equal(200);
+				done();
 			})
 			.catch((res) => {
-				console.log('this is datafdsgjhkhnlaopqwfjinib ifjhnvwinrwirwnirnrweirnwigvnwre,', res);
+				expect(false).to.equal(true);
+				done();
 			});
-		
-		// expect(isValid).to.be.true;
   });
   it('should respond to a bad route with an error', function(done){
-		axios.get(`${server}/`)
+		axios.get(`${server}/api/getAll`)
 			.then((data) => {
 				expect(false).to.equal(true);
+				done();
 			})
 			.catch((res) => {
 				expect(res).to.be.an('error');
-				done()
+				done();
 			});
   });
 })
