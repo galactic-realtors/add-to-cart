@@ -3,23 +3,42 @@ const expect = require('chai').expect;
 const should = require('chai').should();
 const {getAllProducts} = require('../database/index');
 
-describe('database communication', () => {
-  it('should return an object', function(){
-		getAllProducts(22, (data) => {
-      const isObj = (typeof data === 'object' && Array.isArray(obj) === false);
-      expect(isObj).to.be.true;
-    })
-  });
-  it('should return the the correct id obj', function(){
-    const id = (Math.floor(Math.random() * 99) + 1) //don't want value to be 0
-		getAllProducts(id, (data) => {
-      const objID = data.id;
-      expect(objID).to.equal(id);
-    })
-  });
-  it('should return an error when no id is given', function(){
-		// const isValid = loginController.isValidUserId('abc1234')
-		// //assert.equal(isValid, false);
-		// isValid.should.equal(false);
-  });
-})
+(function() {
+  'use strict';
+  describe('database communication', () => {
+    
+    let id = 69;
+    it('should return an object', function(done){
+      getAllProducts(id, (err, data) => {
+        const isObj = (typeof data === 'object' && Array.isArray(data) === false);
+        expect(isObj).to.be.true;
+        done();
+      })
+    });
+    it('should return the the correct id obj', function(done){
+      console.log('we here,', id);
+      getAllProducts(id, (err, data) => {
+        console.log('we got', data);
+        const objID = data.id;
+        console.log('we got here again', objID);
+        expect(objID).to.equal(id);
+        done();
+      })
+    });
+    it('should contain the required fields (id, product_name, price)', function(done){
+      getAllProducts(id, (err, data) => {
+        expect(data.id).to.exist;
+        expect(data.product_name).to.exist;
+        expect(data.price).to.exist;
+        done();
+      })
+    });
+    it('should return an error when no id is supplied', function(done){
+      getAllProducts(null, (err, data) => {
+        expect(err).to.be.an('error');
+        done();
+      })
+    });
+
+  })
+})();
