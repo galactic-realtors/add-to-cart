@@ -15,26 +15,17 @@ const {getAllProducts} = require('../database/index');
         done();
       })
     });
-    it('should return the the correct id obj', function(done){
-      console.log('we here,', id);
+    it('should return the the correct desired object', function(done){
       getAllProducts(id, (err, data) => {
-        console.log('we got', data);
-        const objID = data.id;
-        console.log('we got here again', objID);
-        expect(objID).to.equal(id);
+        expect(data.id).to.equal(69);
+        expect(data.product_name).to.equal('Chicken - Whole');
+        expect(data.price).to.equal('$5352.52');
         done();
       })
     });
-    it('should contain the required fields (id, product_name, price)', function(done){
-      getAllProducts(id, (err, data) => {
-        expect(data.id).to.exist;
-        expect(data.product_name).to.exist;
-        expect(data.price).to.exist;
-        done();
-      })
-    });
-    it('should return an error when no id is supplied', function(done){
-      getAllProducts(null, (err, data) => {
+
+    it('should return an error when an invalid ID is supplied', function(done){
+      getAllProducts('abc', (err, data) => {
         expect(err).to.be.an('error');
         done();
       })

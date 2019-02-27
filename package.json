@@ -8,7 +8,8 @@
   "scripts": {
     "seed": "node ./database/seed.js",
     "build": "webpack -d --watch",
-    "start": "nodemon ./server/index.js"
+    "start": "nodemon ./server/index.js",
+    "test": "mocha --recursive test"
   },
   "dependencies": {
     "axios": "^0.18.0",
