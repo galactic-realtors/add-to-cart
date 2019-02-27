@@ -3,7 +3,6 @@ const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
 const db = require('../database/index.js');
-// const Cart = require('../database/index.js');
 
 
 
@@ -24,6 +23,5 @@ app.get('/api/getAll/:id', (req, res) => {
     console.log('grabbing id successful!!')
   })
 })
-// console.log(__dirname);
 
   app.listen(port, () => console.log(`Server is listening on port ${port}!`))
