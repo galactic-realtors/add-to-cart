@@ -2,7 +2,7 @@ const assert = require('assert');
 const expect = require('chai').expect;
 const { getAllProducts } = require('../database/index');
 
-(function() { //testing travis
+(function() {
   'use strict';
   describe('database communication', () => {
     
