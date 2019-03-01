@@ -9,7 +9,7 @@ const db = require('../database/index');
     let id = 69;
     it('should return an object', function(done){
       
-      db('testinsert')
+      db('prices')
       .select()
       .where('id', `${id}`)
       .then((data) => {
@@ -23,7 +23,7 @@ const db = require('../database/index');
       });
     });
     it('should return the the correct desired object', function(done){
-      db('testinsert')
+      db('prices')
       .select()
       .where('id', `${id}`)
       .then((data) => {
@@ -39,7 +39,7 @@ const db = require('../database/index');
     });
 
     it('should return an error when an invalid ID is supplied', function(done){
-      db('testinsert')
+      db('prices')
       .select()
       .where('id', `${id}`)
       .then((data) => {
