@@ -7,7 +7,7 @@ const db = require('../database/index');
 (function() {
   'use strict';
   describe('database communication', () => {
-    
+    console.log('dis be process env', process.env);
     let id = 69;
     it('should return an object', function(done){
       
