@@ -17,7 +17,6 @@ const db = require('../database/index');
         done()
       })
       .catch((err) => {
-        console.log('this be err', err);
         expect(false).to.equal(true);
         done()
       });
