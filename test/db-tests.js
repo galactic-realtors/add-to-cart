@@ -2,7 +2,7 @@ const assert = require('assert');
 const expect = require('chai').expect;
 const db = require('../database/index');
 
-(function() {
+(function() { //once again
   'use strict';
   describe('database communication', () => {
     let id = 69;
