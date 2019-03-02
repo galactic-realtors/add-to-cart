@@ -12,6 +12,7 @@
     "test": "mocha --recursive test --exit"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.2.5",
     "async": "^2.6.2",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
