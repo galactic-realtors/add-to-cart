@@ -17,7 +17,6 @@ const db = require('../database/index');
         done()
       })
       .catch((err) => {
-        console.log('this be err', err);
         expect(false).to.equal(true);
         done()
       });
@@ -28,8 +27,8 @@ const db = require('../database/index');
       .where('id', `${id}`)
       .then((data) => {
         expect(data[0].id).to.equal(69);
-        expect(data[0].product_name).to.equal('Chicken - Whole');
-        expect(data[0].price).to.equal('$5352.52');
+        expect(data[0].product_name).to.an('string');
+        expect(data[0].price).to.be.an('string');
         done()
       })
       .catch((err) => {

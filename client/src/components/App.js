@@ -100,7 +100,7 @@ class App extends React.Component {
   render() {
     return (
       <div style={border}>
-        <div style={priceColor}> {this.state.info.price}</div>
+        <div style={priceColor}> ${this.state.info.price}</div>
         &
         <b> FREE Shipping </b>
         <br></br>
