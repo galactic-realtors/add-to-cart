@@ -7,12 +7,10 @@ const db = require('../database/index.knex');
   describe('database communication', () => {
     let id = 69;
     it('should return an object', function(done){
-      console.time('start')
       db('prices')
       .select()
       .where('id', `${id}`)
       .then((data) => {
-        console.timeEnd('start');
         const isObj = (typeof data[0] === 'object' && Array.isArray(data[0]) === false);
         expect(isObj).to.equal(true);
         done()
@@ -23,12 +21,10 @@ const db = require('../database/index.knex');
       });
     });
     it('should return the the correct desired object', function(done){
-      console.time('start')
       db('prices')
       .select()
       .where('id', `${id}`)
       .then((data) => {
-        console.timeEnd('start');
         expect(data[0].id).to.equal(69);
         expect(data[0].product_name).to.an('string');
         expect(data[0].price).to.be.an('string');
