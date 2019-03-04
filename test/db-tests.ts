@@ -33,7 +33,7 @@ const db: any = require("../database/index.knex.ts");
           (data: Array<any>): void => {
             expect(data[0].id).to.equal(69);
             expect(data[0].product_name).to.an("string");
-            expect(data[0].prices).to.be.an("string");
+            expect(data[0].price).to.be.an("string");
             done();
           }
         )
