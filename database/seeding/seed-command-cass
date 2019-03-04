@@ -1,0 +1,1 @@
+COPY testinsert FROM '/Users/jamesboyett/coding/hack-reactor/sdc/add-to-cart/database/seedingfile.csv' WITH DELIMITER='|' AND HEADER=TRUE;
