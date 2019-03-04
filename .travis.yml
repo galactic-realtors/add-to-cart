@@ -13,4 +13,5 @@ install:
 before_script:
   - nohup node ./server/index.js &
 scripts:
+  - npm start
   - npm test
