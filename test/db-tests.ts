@@ -4,7 +4,7 @@ const db: any = require("../database/index.knex.ts");
 
 (function() {
   "use strict";
-  describe("database communication", () => {
+  describe("database communication: Typescript", () => {
     let id = 69;
     it("should return an object", function(done) {
       db("prices")

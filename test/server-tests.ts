@@ -4,7 +4,7 @@ const axios = require("axios");
 
 const server = "http://localhost:3000";
 
-describe("server communication", () => {
+describe("server communication: Typescript", () => {
   it("should return a 200 on successful message", function(done) {
     axios
       .get(`${server}/api/getAll/69`)

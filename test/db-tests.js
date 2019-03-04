@@ -4,7 +4,7 @@ const db = require('../database/index.knex.js');
 
 (function() {
   'use strict';
-  describe('database communication', () => {
+  describe('database communication: Javascript', () => {
     let id = 69;
     it('should return an object with the correct items', function(done){
       db('prices')
