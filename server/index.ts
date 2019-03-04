@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port: number = 3000;
 const bodyParser = require("body-parser");
-const db = require("../database/index.knex.ts");
+const db: any = require("../database/index.knex.ts");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,3 +28,5 @@ app.listen(
   port,
   (): void => console.log(`Server is listening on port ${port}!`)
 );
+
+export {};
