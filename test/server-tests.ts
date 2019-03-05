@@ -20,7 +20,6 @@ describe("server communication: Typescript", (): void => {
         }
       );
   });
-
   it("should make a POST request to the database", function(done: Function): void {
     const payload: object = {
       product_name: "A Real Product",
@@ -43,7 +42,6 @@ describe("server communication: Typescript", (): void => {
         }
       );
   });
-
   it("should respond to a bad route with an error", function(done: Function): void {
     axios
       .get(`${server}/api/products`)

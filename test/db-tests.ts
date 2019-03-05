@@ -43,7 +43,6 @@ const db: any = require("../database/index.knex.ts");
           }
         );
     });
-
     it("should add the specified item to the database", function(done: Function): void {
       const payload: object = {
         product_name: "A Real Product",
@@ -66,7 +65,6 @@ const db: any = require("../database/index.knex.ts");
           }
         );
     });
-
     it("should return an error when an invalid ID is supplied", function(done: Function): void {
       db("prices")
         .select()
