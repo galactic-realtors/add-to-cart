@@ -4,7 +4,7 @@ var express = require("express");
 var app = express();
 var port = 3000;
 var bodyParser = require("body-parser");
-var db = require("../database/index.knex.js");
+var db = require("../../database/index.knex.js");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/../dist"));

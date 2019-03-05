@@ -1,11 +1,10 @@
-const assert = require("assert");
-const expect = require("chai").expect;
+const { expect } = require("chai");
 const axios = require("axios");
 
 const server = "http://localhost:3000";
 
-describe("server communication: Typescript", () => {
-  it("should return a 200 on successful message", function(done) {
+describe("server communication: Typescript", (): void => {
+  it("should return a 200 on successful message", function(done): void {
     axios
       .get(`${server}/api/product/69`)
       .then(
@@ -21,7 +20,7 @@ describe("server communication: Typescript", () => {
         }
       );
   });
-  it("should respond to a bad route with an error", function(done) {
+  it("should respond to a bad route with an error", function(done): void {
     axios
       .get(`${server}/api/products`)
       .then(

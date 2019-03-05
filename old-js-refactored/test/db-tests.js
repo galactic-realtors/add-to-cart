@@ -1,6 +1,5 @@
-const assert = require('assert');
-const expect = require('chai').expect;
-const db = require('../database/index.knex.js');
+const {expect} = require('chai');
+const db = require('../../database/index.knex.js');
 
 (function() {
   'use strict';

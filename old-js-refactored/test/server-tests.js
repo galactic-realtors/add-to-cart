@@ -1,5 +1,4 @@
-const assert = require('assert');
-const expect = require('chai').expect;
+const {expect} = require('chai');
 const axios = require('axios');
 
 const server = 'http://localhost:3000';
