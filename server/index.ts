@@ -2,7 +2,7 @@ import express = require("express");
 import compression = require("compression");
 import cors = require("cors");
 import bodyParser = require("body-parser");
-const db = require("../database/index.knex.ts");
+const db = require("../database/index.knex");
 const app: express.Express = express();
 const port: number = 3000;
 

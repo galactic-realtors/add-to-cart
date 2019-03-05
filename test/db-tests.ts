@@ -1,5 +1,5 @@
 const { expect } = require("chai");
-const db: any = require("../database/index.knex.ts");
+const db: any = require("../database/index.knex");
 
 (function() {
   "use strict";

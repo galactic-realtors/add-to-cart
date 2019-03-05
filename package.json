@@ -13,7 +13,9 @@
     "test": "mocha -r ts-node/register test/*.*s --exit",
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly ./server/index.ts",
-    "prod": "tsc && node ./build/app.js"
+    "prod": "tsc && node ./build/app.js",
+    "build": "docker build -t kyruski/add-to-cart-service .",
+    "push": "docker push kyruski/add-to-cart-service"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
