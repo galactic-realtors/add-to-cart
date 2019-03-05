@@ -4,7 +4,7 @@ const axios = require("axios");
 const server = "http://localhost:3000";
 
 describe("server communication: Typescript", (): void => {
-  it("should return a 200 on successful message", function(done): void {
+  it("should return a 200 on successful message", function(done: Function): void {
     axios
       .get(`${server}/api/product/69`)
       .then(
@@ -20,7 +20,7 @@ describe("server communication: Typescript", (): void => {
         }
       );
   });
-  it("should respond to a bad route with an error", function(done): void {
+  it("should respond to a bad route with an error", function(done: Function): void {
     axios
       .get(`${server}/api/products`)
       .then(

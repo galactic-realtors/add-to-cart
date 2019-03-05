@@ -3,9 +3,9 @@ const db: any = require("../database/index.knex.ts");
 
 (function() {
   "use strict";
-  describe("database communication: Typescript", () => {
+  describe("database communication: Typescript", (): void => {
     let id = 69;
-    it("should return an object", function(done) {
+    it("should return an object", function(done: Function): void {
       db("prices")
         .select()
         .where("id", `${id}`)
@@ -24,7 +24,7 @@ const db: any = require("../database/index.knex.ts");
           }
         );
     });
-    it("should return the the correct desired object", function(done) {
+    it("should return the the correct desired object", function(done: Function): void {
       db("prices")
         .select()
         .where("id", `${id}`)
@@ -44,7 +44,7 @@ const db: any = require("../database/index.knex.ts");
         );
     });
 
-    it("should return an error when an invalid ID is supplied", function(done) {
+    it("should return an error when an invalid ID is supplied", function(done: Function): void {
       db("prices")
         .select()
         .where("id", `${id}`)
