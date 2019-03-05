@@ -87,7 +87,7 @@ class App extends React.Component {
     })
     .then()
     .catch((err) => console.log('oh no there was an error in Axios request', err))
- }
+}
 
 
   handleClick() {
