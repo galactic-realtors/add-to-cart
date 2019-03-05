@@ -1,10 +1,10 @@
-const express = require("express");
-const app = express();
+import express = require("express");
+import compression = require("compression");
+import cors = require("cors");
+import bodyParser = require("body-parser");
+const db = require("../database/index.knex.ts");
+const app: express.Express = express();
 const port: number = 3000;
-const compression = require("compression");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const db: any = require("../database/index.knex.ts");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -13,13 +13,17 @@ app.use(express.static(__dirname + "/../dist"));
 app.use(cors());
 app.use(compression());
 
-app.get("*.js", function callback(req: any, res: any, next: any) {
+app.get("*.js", function callback(
+  req: express.Request,
+  res: express.Response,
+  next: any
+) {
   req.url += ".gz";
   res.set("Content-Encoding", "gzip");
   next();
 });
 
-app.get("/api/product/:id", (req: any, res: any) => {
+app.get("/api/product/:id", (req: express.Request, res: express.Response) => {
   let reqId: string = req.params.id;
   db("prices")
     .select()
@@ -32,7 +36,10 @@ app.get("/api/product/:id", (req: any, res: any) => {
     });
 });
 
-app.post("/api/product/", function(req: any, res: any) {
+app.post("/api/product/", function(
+  req: express.Request,
+  res: express.Response
+) {
   const { product_name, price } = req.body;
   const payload = {
     product_name,
