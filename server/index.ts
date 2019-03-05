@@ -9,16 +9,31 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + "/../dist"));
 
-app.get("/api/getAll/:id", (req: any, res: any) => {
+app.get("/api/product/:id", (req: any, res: any) => {
   let reqId: string = req.params.id;
-  db("testinsert")
+  db("prices")
     .select()
-    .where("id", `${reqId}`)
+    .where("id", reqId)
     .then((data: object) => {
-      res.json(data);
       console.log("grabbing id successful!!");
+      res.json(data);
     })
     .catch((err: string) => {
+      console.log(err, "cannot grab id from database");
+      res.end();
+    });
+});
+
+app.post("/api/product/", function(req: any, res: any) {
+  var reqId = req.params.id;
+  db("prices")
+    .select()
+    .where("id", reqId)
+    .then(function(data: object) {
+      console.log("grabbing id successful!!");
+      res.json(data);
+    })
+    .catch(function(err: string) {
       console.log(err, "cannot grab id from database");
       res.end();
     });
