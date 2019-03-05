@@ -31,8 +31,31 @@ const db: any = require("../database/index.knex.ts");
         .then(
           (data: Array<any>): void => {
             expect(data[0].id).to.equal(69);
-            expect(data[0].product_name).to.an("string");
-            expect(data[0].price).to.be.an("string");
+            expect(data[0].product_name).to.equal("Incredible Steel Salad");
+            expect(data[0].price).to.be.equal("887.00");
+            done();
+          }
+        )
+        .catch(
+          (): void => {
+            expect(false).to.equal(true);
+            done();
+          }
+        );
+    });
+
+    it("should add the specified item to the database", function(done: Function): void {
+      const payload: object = {
+        product_name: "A Real Product",
+        price: "1234.56"
+      };
+      db("prices")
+        .insert(payload)
+        .returning(["id", "product_name", "price"])
+        .then(
+          (data: Array<any>): void => {
+            expect(data[0].product_name).to.equal("A Real Product");
+            expect(data[0].price).to.equal("1234.56");
             done();
           }
         )

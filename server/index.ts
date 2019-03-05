@@ -36,10 +36,7 @@ app.get("/api/product/:id", (req: express.Request, res: express.Response) => {
     });
 });
 
-app.post("/api/product/", function(
-  req: express.Request,
-  res: express.Response
-) {
+app.post("/api/product/", (req: express.Request, res: express.Response) => {
   const { product_name, price } = req.body;
   const payload = {
     product_name,
@@ -47,7 +44,7 @@ app.post("/api/product/", function(
   };
   db("prices")
     .insert(payload)
-    .returning("id")
+    .returning(["id", "product_name", "price"])
     .then(function(data: object) {
       res.json(data);
     })
