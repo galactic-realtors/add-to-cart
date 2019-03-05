@@ -1,2 +1,2 @@
 COPY prices FROM '/Users/jamesboyett/coding/hack-reactor/sdc/add-to-cart/database/seedingfile.csv' DELIMITER '|' CSV HEADER;
-COPY prices FROM '/var/lib/pgsql92/seedingfile.csv' DELIMITER '|' CSV HEADER;
+COPY prices(product_name, price) FROM '/var/lib/pgsql92/seedingfile.csv' DELIMITER '|' CSV HEADER;

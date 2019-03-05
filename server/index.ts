@@ -25,12 +25,16 @@ app.get("/api/product/:id", (req: any, res: any) => {
 });
 
 app.post("/api/product/", function(req: any, res: any) {
-  var reqId = req.params.id;
+  console.log("this is req.body", req.body);
+  const { product_name, price } = req.body;
+  const payload = {
+    product_name,
+    price
+  };
   db("prices")
-    .select()
-    .where("id", reqId)
+    .insert(payload)
+    .returning("id")
     .then(function(data: object) {
-      console.log("grabbing id successful!!");
       res.json(data);
     })
     .catch(function(err: string) {
