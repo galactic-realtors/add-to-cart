@@ -7,7 +7,8 @@
   "main": "server/index.js",
   "scripts": {
     "seed": "node ./database/seed.js",
-    "build": "webpack -d --watch",
+    "build-dev": "webpack -d --watch --display-error-details --config webpack.common.js",
+    "build-prod": "webpack -p --config webpack.prod.js",
     "start": "nodemon ./server/index.js",
     "test": "mocha -r ts-node/register test/*.*s --exit",
     "tsc": "tsc",
@@ -26,6 +27,9 @@
     "body-parser": "^1.18.3",
     "cassandra-driver": "^4.0.0",
     "chai": "^4.2.0",
+    "compression": "^1.7.3",
+    "compression-webpack-plugin": "^2.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "express-cassandra": "^2.3.0",
@@ -38,7 +42,8 @@
     "ts-node": "^8.0.2",
     "ts-node-dev": "^1.0.0-pre.32",
     "tslint": "^5.13.1",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.3333",
+    "webpack-merge": "^4.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",

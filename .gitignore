@@ -3,5 +3,6 @@ node_modules
 .env
 logfile
 dist/bundle.js
+dist/bundle.js.gz
 database/seeding/seedingfile.csv
 database/seeding/seedingfile.json

@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const port: number = 3000;
+const compression = require("compression");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const db: any = require("../database/index.knex.ts");
 
@@ -8,6 +10,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + "/../dist"));
+app.use(cors());
+app.use(compression());
+
+app.get("*.js", function callback(req: any, res: any, next: any) {
+  req.url += ".gz";
+  res.set("Content-Encoding", "gzip");
+  next();
+});
 
 app.get("/api/product/:id", (req: any, res: any) => {
   let reqId: string = req.params.id;
@@ -15,17 +25,14 @@ app.get("/api/product/:id", (req: any, res: any) => {
     .select()
     .where("id", reqId)
     .then((data: object) => {
-      console.log("grabbing id successful!!");
       res.json(data);
     })
     .catch((err: string) => {
-      console.log(err, "cannot grab id from database");
       res.end();
     });
 });
 
 app.post("/api/product/", function(req: any, res: any) {
-  console.log("this is req.body", req.body);
   const { product_name, price } = req.body;
   const payload = {
     product_name,
@@ -38,7 +45,6 @@ app.post("/api/product/", function(req: any, res: any) {
       res.json(data);
     })
     .catch(function(err: string) {
-      console.log(err, "cannot grab id from database");
       res.end();
     });
 });
