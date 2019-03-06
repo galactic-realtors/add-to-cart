@@ -2,8 +2,8 @@
 
 require("dotenv").config();
 
-const environment = process.env.NODE_ENV || "production";
+const env: string = "production";
 const config = require("../knexfile.js");
-const knex: any = require("knex")(config[environment]); // eslint-disable-line
+const knex = require("knex")(config[env]); // eslint-disable-line
 
 module.exports = knex;

@@ -1,25 +1,53 @@
-const express = require("express");
-const app = express();
+import express = require("express");
+import compression = require("compression");
+import cors = require("cors");
+import bodyParser = require("body-parser");
+const db = require("../database/index.knex");
+const app: express.Express = express();
 const port: number = 3000;
-const bodyParser = require("body-parser");
-const db: any = require("../database/index.knex.ts");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(express.static(__dirname + "/../dist"));
+app.use(cors());
+app.use(compression());
 
-app.get("/api/getAll/:id", (req: any, res: any) => {
+app.get("*.js", function callback(
+  req: express.Request,
+  res: express.Response,
+  next: any
+) {
+  req.url += ".gz";
+  res.set("Content-Encoding", "gzip");
+  next();
+});
+
+app.get("/api/product/:id", (req: express.Request, res: express.Response) => {
   let reqId: string = req.params.id;
-  db("testinsert")
+  db("prices")
     .select()
-    .where("id", `${reqId}`)
+    .where("id", reqId)
     .then((data: object) => {
       res.json(data);
-      console.log("grabbing id successful!!");
     })
     .catch((err: string) => {
-      console.log(err, "cannot grab id from database");
+      res.end();
+    });
+});
+
+app.post("/api/product/", (req: express.Request, res: express.Response) => {
+  const { product_name, price } = req.body;
+  const payload = {
+    product_name,
+    price
+  };
+  db("prices")
+    .insert(payload)
+    .returning(["id", "product_name", "price"])
+    .then(function(data: object) {
+      res.json(data);
+    })
+    .catch(function(err: string) {
       res.end();
     });
 });
